@@ -14,7 +14,7 @@ $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $< -o $@
 
 clean:
-
-fclean:
-
-re:
+	rm -rf $(OBJS)
+fclean:	clean
+	rm -rf PhoneBook
+re: fclean all

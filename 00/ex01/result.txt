@@ -1,0 +1,338 @@
+Welcome to PhoneBook
+You can select some options
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|     Erick|     Ramos|   erramos|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|     Erick|     Ramos|   erramos|
+-------------------------------------------
+         1|      Alan|     Danta|  aldantas|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|     Erick|     Ramos|   erramos|
+-------------------------------------------
+         1|      Alan|     Danta|  aldantas|
+-------------------------------------------
+         2|      Yuri|  Fontnele|  YuFonten|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|     Erick|     Ramos|   erramos|
+-------------------------------------------
+         1|      Alan|     Danta|  aldantas|
+-------------------------------------------
+         2|      Yuri|  Fontnele|  YuFonten|
+-------------------------------------------
+         3|     Thais|    Franco|  thfranco|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|     Erick|     Ramos|   erramos|
+-------------------------------------------
+         1|      Alan|     Danta|  aldantas|
+-------------------------------------------
+         2|      Yuri|  Fontnele|  YuFonten|
+-------------------------------------------
+         3|     Thais|    Franco|  thfranco|
+-------------------------------------------
+         4|     Joana|     Silva|    jsilva|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|     Erick|     Ramos|   erramos|
+-------------------------------------------
+         1|      Alan|     Danta|  aldantas|
+-------------------------------------------
+         2|      Yuri|  Fontnele|  YuFonten|
+-------------------------------------------
+         3|     Thais|    Franco|  thfranco|
+-------------------------------------------
+         4|     Joana|     Silva|    jsilva|
+-------------------------------------------
+         5|    Carlos|   Pereira|   carlosp|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|     Erick|     Ramos|   erramos|
+-------------------------------------------
+         1|      Alan|     Danta|  aldantas|
+-------------------------------------------
+         2|      Yuri|  Fontnele|  YuFonten|
+-------------------------------------------
+         3|     Thais|    Franco|  thfranco|
+-------------------------------------------
+         4|     Joana|     Silva|    jsilva|
+-------------------------------------------
+         5|    Carlos|   Pereira|   carlosp|
+-------------------------------------------
+         6|       Ana|    Mendes|      anam|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|     Erick|     Ramos|   erramos|
+-------------------------------------------
+         1|      Alan|     Danta|  aldantas|
+-------------------------------------------
+         2|      Yuri|  Fontnele|  YuFonten|
+-------------------------------------------
+         3|     Thais|    Franco|  thfranco|
+-------------------------------------------
+         4|     Joana|     Silva|    jsilva|
+-------------------------------------------
+         5|    Carlos|   Pereira|   carlosp|
+-------------------------------------------
+         6|       Ana|    Mendes|      anam|
+-------------------------------------------
+         7|     Lucas|    Santos|      lucs|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|  Fernanda|     Costa|      feco|
+-------------------------------------------
+         1|      Alan|     Danta|  aldantas|
+-------------------------------------------
+         2|      Yuri|  Fontnele|  YuFonten|
+-------------------------------------------
+         3|     Thais|    Franco|  thfranco|
+-------------------------------------------
+         4|     Joana|     Silva|    jsilva|
+-------------------------------------------
+         5|    Carlos|   Pereira|   carlosp|
+-------------------------------------------
+         6|       Ana|    Mendes|      anam|
+-------------------------------------------
+         7|     Lucas|    Santos|      lucs|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|  Fernanda|     Costa|      feco|
+-------------------------------------------
+         1|    Rafael|     Souza|     rafas|
+-------------------------------------------
+         2|      Yuri|  Fontnele|  YuFonten|
+-------------------------------------------
+         3|     Thais|    Franco|  thfranco|
+-------------------------------------------
+         4|     Joana|     Silva|    jsilva|
+-------------------------------------------
+         5|    Carlos|   Pereira|   carlosp|
+-------------------------------------------
+         6|       Ana|    Mendes|      anam|
+-------------------------------------------
+         7|     Lucas|    Santos|      lucs|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: Enter your first name: 
+Enter your last name: 
+Enter your nickname: 
+Enter your phonenumber: 
+Enter your darkest secret: 
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: 
+     Index| FirstName|  LastName|  NickName|
+-------------------------------------------
+         0|  Fernanda|     Costa|      feco|
+-------------------------------------------
+         1|    Rafael|     Souza|     rafas|
+-------------------------------------------
+         2|   Beatriz|   Almeida|       bia|
+-------------------------------------------
+         3|     Thais|    Franco|  thfranco|
+-------------------------------------------
+         4|     Joana|     Silva|    jsilva|
+-------------------------------------------
+         5|    Carlos|   Pereira|   carlosp|
+-------------------------------------------
+         6|       Ana|    Mendes|      anam|
+-------------------------------------------
+         7|     Lucas|    Santos|      lucs|
+
+		MENU
+ADD:      add and save new contact
+SEARCH:   find a specific contact
+EXIT:     quits and lost the contacts
+
+Please make your choise: See you son
