@@ -19,6 +19,7 @@ PhoneBook::PhoneBook(void) {
 }
 
 void    PhoneBook::addContact() {
+
 	std::string input;
 	Contact contact;
 
@@ -48,6 +49,7 @@ std::string PhoneBook::formmatStr(std::string str) {
 }
 
 void PhoneBook::listContacts(void) {
+
 	int i = 0;
 
 	std::cout << "\n     Index| FirstName|  LastName|  NickName|" << std::endl;
@@ -66,11 +68,11 @@ void PhoneBook::listContacts(void) {
 void PhoneBook::selectContact(void) {
 
 	int index;
+	std::string number;
 
 	std::cout << "Enter the index: ";
-	std::cin.clear();
-	std::cin >> index;
-
+	std::getline(std::cin, number);
+	index = std::stoi(number);
 	if (index > this->currentContact % 8) {
 		std::cout << "Not valid index!";
 		return ;

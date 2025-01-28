@@ -1,5 +1,5 @@
 
-NAME=PhoneBook
+NAME=phonebook
 CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 OBJS= $(FILES:.cpp=.o)
@@ -16,5 +16,5 @@ $(NAME): $(OBJS)
 clean:
 	rm -rf $(OBJS)
 fclean:	clean
-	rm -rf PhoneBook
+	rm -rf $(NAME)
 re: fclean all
