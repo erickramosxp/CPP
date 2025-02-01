@@ -6,6 +6,7 @@
 # include "Contact.hpp"
 # include <iostream> 
 # include <iomanip>
+#include <limits>
 # include <string>
 
 
@@ -21,8 +22,6 @@ class PhoneBook {
         int validOption(std::string option);
         void introduction(void);
         void menu(void);
-        // int setCurrentContact(int currentContact);
-        // Contact searchContact(std::string name);
 
     private:
         int maxContacts;

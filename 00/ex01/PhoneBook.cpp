@@ -71,9 +71,10 @@ void PhoneBook::selectContact(void) {
 	std::string number;
 
 	std::cout << "Enter the index: ";
-	std::getline(std::cin, number);
-	index = std::stoi(number);
-	if (index > this->currentContact % 8) {
+	std::cin >> index;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.clear();
+	if (index >= this->currentContact || index < 0) {
 		std::cout << "Not valid index!";
 		return ;
 	}
