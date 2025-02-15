@@ -18,17 +18,35 @@ PhoneBook::PhoneBook(void) {
 	std::cout << "\nPlease make your choise: ";
 }
 
-void    PhoneBook::addContact() {
+std::string PhoneBook::getInput(std::string text_input) {
+    
+	std::string input;
+    
+	std::cout << text_input;
+    std::getline(std::cin, input);
+    if (std::cin.eof()) {
+        return "";
+	}
+    return (input);
+}
+
+int    PhoneBook::addContact() {
 
 	std::string input;
 	Contact contact;
 
-	contact.setFirstName();
-	contact.setLastName();
-	contact.setNickName();
-	contact.setNumber();
-	contact.setDarkestSecret();
+	if (!contact.handle_input_name())
+		return (0);
+	if (!contact.handle_input_last_name())
+		return (0);
+	if (!contact.handle_input_number())
+		return (0);
+	if (!contact.handle_input_nickname())
+		return (0);
+	if (!contact.handle_input_darkestsecret())
+		return (0);
 	this->add(contact);
+	return (1);
 }
 
 void    PhoneBook::add(Contact contact) {
@@ -65,7 +83,16 @@ void PhoneBook::listContacts(void) {
 	std::cout << std::endl;
 }
 
-void PhoneBook::selectContact(void) {
+void	PhoneBook::print_contact(int index) {
+	
+	std::cout << "\nName: " +  this->contact[index].getFirstName() << std::endl;
+	std::cout << "Last Name: " +  this->contact[index].getLastName() << std::endl;
+	std::cout << "Nickname : " +  this->contact[index].getNickName() << std::endl;
+	std::cout << "Phone number : " +  this->contact[index].getNumber() << std::endl;
+	std::cout << "DarkestSecret : " +  this->contact[index].getDarkestSecret() << std::endl;
+}
+
+int PhoneBook::selectContact(void) {
 
 	int index;
 	std::string number;
@@ -76,14 +103,11 @@ void PhoneBook::selectContact(void) {
 	std::cin.clear();
 	if (index >= this->currentContact || index < 0) {
 		std::cout << "Not valid index!";
-		return ;
+		return (0);
 	}
-	std::cout << "Name: " +  this->contact[index].getFirstName() << std::endl;
-	std::cout << "Last Name: " +  this->contact[index].getLastName() << std::endl;
-	std::cout << "Nickname : " +  this->contact[index].getNickName() << std::endl;
-	std::cout << "Phone number : " +  this->contact[index].getNumber() << std::endl;
-	std::cout << "DarkestSecret : " +  this->contact[index].getDarkestSecret() << std::endl;
+	print_contact(index);
 	std::cin.clear();
+	return (1);
 }
 
 
