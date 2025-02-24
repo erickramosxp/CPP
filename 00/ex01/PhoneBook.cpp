@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erramos <erramos@student.42.rio>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/24 19:07:34 by erramos           #+#    #+#             */
+/*   Updated: 2025/02/24 19:07:36 by erramos          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void) {
@@ -112,6 +124,7 @@ int PhoneBook::selectContact(void) {
 
 
 int		PhoneBook::validOption(std::string option) {
+
 	if (!option.compare("ADD") || !option.compare("SEARCH") || !option.compare("EXIT")) {
 		return (1);
 	}
@@ -120,6 +133,21 @@ int		PhoneBook::validOption(std::string option) {
 		return (0);
 	}
 }
-/*
-Contact PhoneBook::searchContact(std::string name){
-}*/
+
+int	PhoneBook::option_chosen(std::string option) {
+	
+	if (!option.compare("ADD")) {
+        if (!this->addContact())
+            return (2);
+    } else if (!option.compare("SEARCH")) {
+        this->listContacts();
+    if (!this->selectContact())
+            return (2);
+    } else if (!option.compare("EXIT")) {
+        std::cout << "See you son" << std::endl;
+        return (3);
+    } else {
+        this->validOption(option);
+    }
+	return (0);
+}
