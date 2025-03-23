@@ -5,8 +5,10 @@ all: $(NAME)
 
 $(NAME): 
 	g++ $(FLAGS) megaphone.cpp -o $(NAME)
-clean:
-	
-fclean:
 
-re:
+clean:
+	rm $(NAME)
+	
+fclean: clean
+
+re: fclean all
