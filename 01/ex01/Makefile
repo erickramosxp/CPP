@@ -2,7 +2,7 @@ NAME=zombieHorde
 CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 OBJS= $(FILES:.cpp=.o)
-FILES= Zombie.cpp newZombie.cpp randomChump.cpp
+FILES= Zombie.cpp zombieHorde.cpp
 
 all: $(NAME)
 
