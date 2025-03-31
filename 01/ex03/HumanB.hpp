@@ -8,7 +8,10 @@ class   HumanB {
         std::string name;
         Weapon *weapon;
     public:
+        HumanB(void);
+        HumanB(std::string name);
+        void setWeapon(Weapon& weapon);
         void attack();
-}
+};
 
 # endif

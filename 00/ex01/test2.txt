@@ -5,6 +5,7 @@ erramos
 21985085891
 batatinha
 SEARCH
+0
 ADD
 Joana
 Silva
@@ -12,6 +13,7 @@ jsilva
 21912345678
 cafe
 SEARCH
+1
 ADD
 Carlos
 Pereira
@@ -19,6 +21,7 @@ carlosp
 21911223344
 viajante
 SEARCH
+2
 ADD
 Ana
 Mendes
@@ -26,6 +29,7 @@ anam
 21944556677
 livros
 SEARCH
+3
 ADD
 Lucas
 Santos
@@ -33,6 +37,7 @@ lucs
 21977889900
 futebol
 SEARCH
+4
 ADD
 Fernanda
 Costa
@@ -40,6 +45,7 @@ feco
 21933445566
 arte
 SEARCH
+5
 ADD
 Rafael
 Souza
@@ -47,6 +53,7 @@ rafas
 21922334455
 musica
 SEARCH
+6
 ADD
 Beatriz
 Almeida
@@ -54,4 +61,13 @@ bia
 21955667788
 viagem
 SEARCH
+7
+ADD
+Yuri
+yufonten
+hdajshd
+2199926556
+dksl
+SEARCH
+0
 EXIT

@@ -1,8 +1,8 @@
-NAME=zombieReference
+NAME=HumanAttack
 CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 OBJS= $(FILES:.cpp=.o)
-FILES= 
+FILES= HumanA.cpp HumanB.cpp Weapon.cpp
 
 all: $(NAME)
 

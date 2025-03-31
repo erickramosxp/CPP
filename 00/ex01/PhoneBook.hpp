@@ -30,7 +30,6 @@ class PhoneBook {
         void	listContacts(void);
         int selectContact(void);
         std::string	formmatStr(std::string str);
-        std::string	getInput(std::string text_input);
         void	print_contact(int index);
         int	validOption(std::string option);
         int option_chosen(std::string option);

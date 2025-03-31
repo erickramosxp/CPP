@@ -4,7 +4,7 @@ NAME = megaphone
 all: $(NAME)
 
 $(NAME): 
-	g++ $(FLAGS) megaphone.cpp -o $(NAME)
+	g++ -g $(FLAGS) megaphone.cpp -o $(NAME)
 
 clean:
 	rm $(NAME)

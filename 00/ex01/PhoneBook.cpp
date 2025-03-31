@@ -30,18 +30,6 @@ PhoneBook::PhoneBook(void) {
 	std::cout << "\nPlease make your choise: ";
 }
 
-std::string PhoneBook::getInput(std::string text_input) {
-    
-	std::string input;
-    
-	std::cout << text_input;
-    std::getline(std::cin, input);
-    if (std::cin.eof()) {
-        return "";
-	}
-    return (input);
-}
-
 int    PhoneBook::addContact() {
 
 	std::string input;
@@ -104,6 +92,11 @@ void	PhoneBook::print_contact(int index) {
 	std::cout << "DarkestSecret : " +  this->contact[index].getDarkestSecret() << std::endl;
 }
 
+void clearInput() {
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
 int PhoneBook::selectContact(void) {
 
 	int index;
@@ -111,8 +104,12 @@ int PhoneBook::selectContact(void) {
 
 	std::cout << "Enter the index: ";
 	std::cin >> index;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cin.clear();
+	if (std::cin.fail()) {
+		clearInput();
+		std::cout << "Invalid input. Please enter a valid number." << std::endl;
+		return (0);
+	}
+	clearInput();
 	if (index >= this->currentContact || index < 0) {
 		std::cout << "Not valid index!";
 		return (0);
@@ -141,8 +138,11 @@ int	PhoneBook::option_chosen(std::string option) {
             return (2);
     } else if (!option.compare("SEARCH")) {
         this->listContacts();
-    if (!this->selectContact())
+    if (!this->selectContact()) {
+    	if (std::cin.eof())
             return (2);
+		return (1);
+	}
     } else if (!option.compare("EXIT")) {
         std::cout << "See you son" << std::endl;
         return (3);
