@@ -11,6 +11,10 @@ class Fixed {
     public:
         Fixed(void);
         Fixed(const Fixed &fixed);
+        Fixed(const int nb);
+        Fixed(const float nb);
+        float toFloat( void ) const;
+        int toInt( void ) const;
         ~Fixed();
         Fixed &operator=(const Fixed& fixed);
 

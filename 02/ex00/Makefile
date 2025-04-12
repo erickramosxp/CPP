@@ -1,8 +1,8 @@
-NAME=harl
+NAME=fixed
 CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 OBJS= $(FILES:.cpp=.o)
-FILES= Harl.cpp
+FILES= Fixed.cpp
 
 all: $(NAME)
 
