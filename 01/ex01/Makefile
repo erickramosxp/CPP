@@ -9,8 +9,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) main.cpp $(OBJS) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(FLAGS) $< -o $@
+%.o: %.cpp
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)

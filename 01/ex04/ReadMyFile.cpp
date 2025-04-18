@@ -14,7 +14,7 @@ ReadMyFile::~ReadMyFile() {
 
 int ReadMyFile::open(void) {
 
-    this->file.open(this->fileName);
+    this->file.open(this->fileName.c_str());
 
     if (this->file.is_open()) {
         return (1);
