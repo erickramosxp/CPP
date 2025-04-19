@@ -27,6 +27,11 @@ void ReadMyFile::replaceAll(std::string oldStr, std::string newStr) {
     
     size_t pos;
     std::string buffer;
+
+    if (oldStr.empty()) {
+        std::cerr << "Error: String to be replaced cannot be empty!" << std::endl;
+        return ;
+    }
     std::string nameFile = this->fileName + ".replace";
     std::ofstream newFile(nameFile.c_str());
 

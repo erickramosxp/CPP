@@ -18,4 +18,5 @@ int main(int argc, char **argv)
         return (1);
     }
     file.replaceAll(oldStr,newStr);
+    return (0);
 }
