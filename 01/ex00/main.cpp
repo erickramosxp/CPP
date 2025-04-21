@@ -1,9 +1,9 @@
 # include "Zombie.hpp"
 
 int main() {
-    Zombie *zombie = new Zombie("Erick");
+    Zombie *zombie = newZombie("Erick");
     zombie->announce();
-    zombie->randomChump("Jaquelina");
+    randomChump("Jaquelina");
 
     delete zombie;
     return 0;
