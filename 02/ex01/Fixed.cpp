@@ -17,9 +17,12 @@ Fixed& Fixed::operator=(const Fixed& fixed) {
     return *this;
 };
 
-Fixed::Fixed(const int nb): _number(nb << this->_bits) {};
+Fixed::Fixed(const int nb): _number(nb << this->_bits) {
+    std::cout << "Int constructor called" << std::endl;
+};
 
 Fixed::Fixed(const float nb) {
+    std::cout << "Float constructor called" << std::endl;
     this->_number = roundf(nb * (1 << this->_bits));
 };
 
