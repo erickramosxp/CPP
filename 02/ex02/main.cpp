@@ -14,6 +14,9 @@ int main( void ) {
     std::cout << a << std::endl;
     
     std::cout << b << std::endl;
+
+    a = 2;
+    std::cout << a << std::endl;
     
     std::cout << Fixed::max( a, b ) << std::endl;
     

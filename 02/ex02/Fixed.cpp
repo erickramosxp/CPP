@@ -54,90 +54,90 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {
     return os;
 };
 
-bool &operator>(const Fixed& fixed) {
+bool Fixed::operator>(const Fixed& fixed) const {
     return (this->getRawBits() > fixed.getRawBits());
 };
 
-bool &operator<(const Fixed& fixed) {
+bool Fixed::operator<(const Fixed& fixed) const {
     return (this->getRawBits() < fixed.getRawBits());
 };
 
-bool &operator>=(const Fixed& fixed) {
+bool Fixed::operator>=(const Fixed& fixed) {
     return (this->getRawBits() >= fixed.getRawBits());
 };
 
-bool &operator<=(const Fixed& fixed) {
+bool Fixed::operator<=(const Fixed& fixed) {
     return (this->getRawBits() <= fixed.getRawBits());
 };
 
-bool &operator==(const Fixed& fixed) {
+bool Fixed::operator==(const Fixed& fixed) {
     return (this->getRawBits() == fixed.getRawBits());
 };
 
-bool &operator!=(const Fixed& fixed) {
+bool Fixed::operator!=(const Fixed& fixed) {
     return (this->getRawBits() != fixed.getRawBits());
 };
 
-float &operator-(const Fixed& fixed) {
+float Fixed::operator-(const Fixed& fixed) {
     return (this->toFloat() - fixed.toFloat());
 };
 
-float &operator+(const Fixed& fixed) {
+float Fixed::operator+(const Fixed& fixed) {
     return (this->toFloat() + fixed.toFloat());
 };
 
-float &operator*(const Fixed& fixed) {
+float Fixed::operator*(const Fixed& fixed) {
     return (this->toFloat() * fixed.toFloat());
 };
 
-float &operator/(const Fixed& fixed) {
+float Fixed::operator/(const Fixed& fixed) {
     return (this->toFloat() / fixed.toFloat());
 };
 
-float &operator++(void) {
+Fixed Fixed::operator++(void) {
     this->_number++;
-    return _number;
+    return *this;
 };
 
-float &operator--(void) {
+Fixed Fixed::operator--(void) {
     this->_number--;
-    return _number;
+    return *this;
 };
 
-float &operator++(int) {
+Fixed Fixed::operator++(int) {
     Fixed temp = *this;
     this->_number++;
     return (temp);
 };
 
-float &operator--(int) {
+Fixed Fixed::operator--(int) {
     Fixed temp = *this;
     this->_number--;
     return (temp);
 };
 
-static Fixed& Fixed::min(Fixed &nb1, Fixed &nb2) {
+Fixed& Fixed::min(Fixed &nb1, Fixed &nb2) {
 
     if (nb1 > nb2)
         return (nb2);
     return (nb1);
 };
 
-static Fixed& Fixed::min(const Fixed &nb1, const Fixed &nb2) {
+const Fixed& Fixed::min(const Fixed &nb1, const Fixed &nb2) {
     
     if (nb1 > nb2)
         return (nb2);
     return (nb1);
 };
 
-static Fixed& Fixed::max(Fixed &nb1, Fixed &nb2) {
+Fixed& Fixed::max(Fixed &nb1, Fixed &nb2) {
 
     if (nb1 < nb2)
         return (nb2);
     return (nb1);
 };
 
-static Fixed& Fixed::max(const Fixed &nb1, const Fixed &nb2) {
+const Fixed& Fixed::max(const Fixed &nb1, const Fixed &nb2) {
     if (nb1 < nb2)
         return (nb2);
     return (nb1);
