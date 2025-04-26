@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erramos <erramos@student.42.rio>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/26 13:20:11 by erramos           #+#    #+#             */
+/*   Updated: 2025/04/26 13:20:12 by erramos          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "Fixed.hpp"
 
 const int Fixed::_bits = 8;
@@ -33,7 +45,6 @@ float Fixed::toFloat( void ) const {
 
 
 int Fixed::toInt( void ) const {
-
     return (this->_number >> this->_bits);
 };
 

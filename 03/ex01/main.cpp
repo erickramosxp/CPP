@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erramos <erramos@student.42.rio>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/26 16:46:16 by erramos           #+#    #+#             */
+/*   Updated: 2025/04/26 16:46:18 by erramos          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
@@ -19,7 +30,7 @@ int main(void) {
     second.attack("Nanami");
 
     ScavTrap scav("Guard");
-    scav.attack("Inimigo 1");
+    scav.attack("Enemy");
     scav.guardGate(); 
 
     return (0);

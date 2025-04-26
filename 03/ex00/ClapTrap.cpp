@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erramos <erramos@student.42.rio>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/26 16:45:06 by erramos           #+#    #+#             */
+/*   Updated: 2025/04/26 16:45:10 by erramos          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
@@ -64,3 +75,19 @@ void ClapTrap::beRepaired(unsigned int amount) {
         std::cout << this->_name << " does not have enought energy points for restore hit points" << std::endl;
     }
 };
+
+std::string ClapTrap::getName() {
+    return _name;
+}
+
+int ClapTrap::getHitPoints() {
+    return _hitPoints;
+}
+
+int ClapTrap::getEnergyPoints() {
+    return _energyPoints;
+}
+
+int ClapTrap::getAttackDamage() {
+    return _attackDamage;
+}
