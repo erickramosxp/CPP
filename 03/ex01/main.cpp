@@ -13,25 +13,36 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-int main(void) {
-
+int main(void)
+{
+    std::cout << "=== Creating ClapTraps ===" << std::endl;
     ClapTrap first("Alphose");
     ClapTrap second("Eric");
 
+    std::cout << "\n=== ClapTraps Attacking Phase ===" << std::endl;
     first.attack("Eric");
-    second.attack("Alphonse");
+    second.attack("Alphose");
 
+    std::cout << "\n=== Copy Constructing ClapTrap: third from first ===" << std::endl;
     ClapTrap third(first);
 
+    std::cout << "\n=== third attacks Neo ===" << std::endl;
     third.attack("Neo");
 
+    std::cout << "\n=== Assignment Operation: second = third ===" << std::endl;
     second = third;
 
+    std::cout << "\n=== second attacks Nanami ===" << std::endl;
     second.attack("Nanami");
 
+    std::cout << "\n=== Creating ScavTrap ===" << std::endl;
     ScavTrap scav("Guard");
-    scav.attack("Enemy");
-    scav.guardGate(); 
 
-    return (0);
+
+    std::cout << "\n=== ScavTrap Actions ===" << std::endl;
+    scav.attack("Enemy");
+    scav.guardGate();
+
+    return 0;
 }
+

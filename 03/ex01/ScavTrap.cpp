@@ -53,3 +53,40 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
 ScavTrap::~ScavTrap(){
     std::cout << "Destructor of ScavTrap was called" << std::endl;
 };
+
+void ScavTrap::attack(const std::string& target) {
+    
+    if (this->_hitPoints <= 0) {
+        std::cout << this->_name << " is dead" << std::endl;
+        return ;
+    }
+    
+    if (this->_energyPoints > 0) {
+        std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+        this->_energyPoints--;
+    } else {
+        std::cout << this->_name << " does not have enought energy points for this attack" << std::endl;
+    }
+};
+
+
+void ScavTrap::takeDamage(unsigned int amount) {
+    
+    if (this->_hitPoints <= 0) {
+        std::cout << this->_name << " is dead" << std::endl;
+        return ;
+   }
+   this->_hitPoints -= amount;
+   std::cout << _name << " took " << amount << " points of damage!" << std::endl;
+};
+
+void ScavTrap::beRepaired(unsigned int amount) {
+
+    if (this->_energyPoints > 0) {
+        std::cout << "Repairs " << amount << " hit points for ScavTrap " << this->_name << std::endl;
+        this->_hitPoints = amount;
+        this->_energyPoints--;
+    } else {
+        std::cout << this->_name << " does not have enought energy points for restore hit points" << std::endl;
+    }
+};
