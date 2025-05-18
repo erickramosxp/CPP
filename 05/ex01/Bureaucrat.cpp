@@ -48,7 +48,7 @@ std::string Bureaucrat::getName() const {
     return this->name;
 };
 
-int Bureaucrat::getGrade() const {
+int Bureaucrat::getGrade() const{
     return this->grade;
 };
 
@@ -78,7 +78,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
     return "Grade is too low (max: 150)";
 };
 
-void Bureaucrat::signForm(AForm &form) {
+void Bureaucrat::signForm(Form &form) {
 
     try {
 
@@ -91,18 +91,4 @@ void Bureaucrat::signForm(AForm &form) {
         std::cerr << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
     }
 
-};
-
-void Bureaucrat::executeForm(AForm const & form) {
-
-    try {
-
-        form.execute(*this);
-
-        std::cout << this->getName() << " execute " << form.getName() << std::endl;
-
-    } catch (std::exception& e) {
-
-        std::cerr << this->getName() << " couldn’t execute " << form.getName() << " because " << e.what() << std::endl;
-    }
 };

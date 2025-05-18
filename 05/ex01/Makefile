@@ -2,7 +2,7 @@ NAME=Forms
 CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 OBJS= $(FILES:.cpp=.o)
-FILES= Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+FILES= Bureaucrat.cpp Form.cpp
 
 all: $(NAME)
 

@@ -41,6 +41,11 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyReq
     this->_target = target;
 };
 
+std::string RobotomyRequestForm::getTarget() const {
+    
+    return this->_target;
+}
+
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 
