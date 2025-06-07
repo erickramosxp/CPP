@@ -7,7 +7,7 @@ Bureaucrat::Bureaucrat(): name("Unknown"), grade(150) {
 };
 
 Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat): name(bureaucrat.name), grade(bureaucrat.grade) {
-
+    
     std::cout << "Copy constructor of Bureaucrat was called" << std::endl;
 };
 

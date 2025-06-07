@@ -12,12 +12,10 @@ int main(int argc, char **argv) {
     }
 
     str = argv[1];
-    double t = .100;
     // float a = .100f;
     ScalarConverter::convert(str);
 
     // std::cout << t * 3.5 << std::endl;
-    std::cout << t << std::endl;
 
     return (0);
 }

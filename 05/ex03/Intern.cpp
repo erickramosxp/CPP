@@ -32,6 +32,10 @@ bool Intern::compareIgnoreCase(const std::string &first, const std::string &seco
     return (true);
 }
 
+const char* Intern::InvalidFormException::what() const throw(){
+    return "Type form invalid.";
+}
+
 AForm* createShrubbery(const std::string& target) {
     return new ShrubberyCreationForm(target);
 }
@@ -43,6 +47,7 @@ AForm* createRobotomy(const std::string& target) {
 AForm* createPresidential(const std::string& target) {
     return new PresidentialPardonForm(target);
 }
+
 
 AForm* Intern::makeForm(std::string formName, std::string targetOfForm) {
     
@@ -64,7 +69,8 @@ AForm* Intern::makeForm(std::string formName, std::string targetOfForm) {
         };
     };
     
-    std::cout << "Invalid option form" << std::endl;
+    // std::cout << "Invalid option form" << std::endl;
+    throw Intern::InvalidFormException();
 
     return NULL;
 };

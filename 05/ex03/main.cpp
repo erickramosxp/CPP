@@ -9,18 +9,30 @@ int main() {
         Intern someRandomIntern;
 
         AForm* rrf;
-        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
-        if (rrf) {
-            std::cout << *rrf << std::endl;
-            std::cout << dynamic_cast<RobotomyRequestForm*>(rrf)->getTarget() << std::endl;
+        try {
+            rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
+            if (rrf) {
+                std::cout << *rrf << std::endl;
+                std::cout << dynamic_cast<RobotomyRequestForm*>(rrf)->getTarget() << std::endl;
+            }
+        } catch (std::exception& ex) {
+            std::cout << "Cannot make this " << ex.what() << std::endl;
         }
+        if (rrf)
+            delete rrf;
         
-        delete rrf;
+        rrf = NULL;
+        try {
+            
+            rrf = someRandomIntern.makeForm("shrubbery creationasd", "Other");
 
-        rrf = someRandomIntern.makeForm("shrubbery creation", "Other");
-
-        delete rrf;
+        } catch (std::exception& ex) {
+            std::cout << "Cannot make this " << ex.what() << std::endl;
+        }
+        if (rrf)
+            delete rrf;
     }
 
 

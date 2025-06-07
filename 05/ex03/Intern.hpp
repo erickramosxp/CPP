@@ -18,4 +18,10 @@ class Intern {
         ~Intern();
         AForm* makeForm(std::string nameForm, std::string targetOfForm);
         bool compareIgnoreCase(const std::string &first, const std::string &second);
+
+        class InvalidFormException : public std::exception {
+            public:
+
+                const char* what() const throw();
+        };
 };

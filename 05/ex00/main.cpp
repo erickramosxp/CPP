@@ -38,5 +38,5 @@ int main() {
         std::cerr << "Error creating Diana: " << e.what() << std::endl;
     }
 
-    return 0;
+    return (0);
 }
