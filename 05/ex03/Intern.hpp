@@ -20,6 +20,7 @@ class Intern {
         bool compareIgnoreCase(const std::string &first, const std::string &second);
 
         class InvalidFormException : public std::exception {
+            
             public:
 
                 const char* what() const throw();

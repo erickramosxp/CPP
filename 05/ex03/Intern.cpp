@@ -69,7 +69,6 @@ AForm* Intern::makeForm(std::string formName, std::string targetOfForm) {
         };
     };
     
-    // std::cout << "Invalid option form" << std::endl;
     throw Intern::InvalidFormException();
 
     return NULL;
