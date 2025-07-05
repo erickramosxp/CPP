@@ -1,18 +1,25 @@
 #include "whatever.hpp"
 #include <iostream>
 
-int main() {
+int main( void ) {
+    
+    int a = 2;
+    int b = 3;
 
-    float a = 10.5, b = 20.2;
+    ::swap( a, b );
 
+    std::cout << "a = " << a << ", b = " << b << std::endl;
+    std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
 
-    std::cout << "a = " << a << std::endl;
-    std::cout << "b = " << b << std::endl;
+    std::string c = "chaine1";
+    std::string d = "chaine2";
 
-    swap<float>(a, b);
+    ::swap(c, d);
 
-    std::cout << "\nAfter swap " << std::endl;
-    std::cout << "a = " << a << std::endl;
-    std::cout << "b = " << b << std::endl;
-    return (0);
+    std::cout << "c = " << c << ", d = " << d << std::endl;
+    std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+    std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+
+    return 0;
 }
