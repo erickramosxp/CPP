@@ -5,10 +5,7 @@ static bool isChar(std::string str)
 {
 
     if (str.length() == 1 && !isdigit(str[0]))
-    {
-        std::cout << "is char" << std::endl;
         return (true);
-    }
 
     return (false);
 }
@@ -28,8 +25,6 @@ static bool isInt(std::string str)
             return (false);
         }
     }
-
-    std::cout << "is integer" << std::endl;
     return (true);
 }
 
@@ -38,6 +33,9 @@ static bool isFloat(std::string str)
 
     size_t i = 0;
     bool hasDot = false;
+
+    if (str == "nanf" || str == "+inff" || str == "-inff" || str == "inff")
+        return (true);
 
     if ((str[i] == '-' || str[i] == '+') && isdigit(str[i + 1]))
         i++;
@@ -69,6 +67,10 @@ static bool isDouble(std::string str)
     size_t i = 0;
     bool hasDot = false;
 
+
+    if (str == "nan" || str == "+inf" || str == "-inf" || str == "inf")
+        return (true);
+
     if (str.length() == 1 && str[0] == '.')
         return (false);
 
@@ -96,57 +98,65 @@ static bool isDouble(std::string str)
 static void charVerification(unsigned char c, TypeConverter &converter)
 {
 
-    if (c < 0 || c > 127)
+    if (c > 127)
     {
         converter.setCharDisplayable(false);
         converter.setCharPossible(false);
     }
-    else if (!isprint(c)) {
+    else if (!isprint(c))
+    {
         converter.setCharDisplayable(false);
         converter.setCharPossible(true);
-    } else {
+    }
+    else
+    {
         converter.setCharDisplayable(true);
         converter.setCharPossible(true);
         converter.setCharValue(c);
     }
 }
 
-static void intVerification(std::string str)
+static void intVerification(std::string str, TypeConverter &converter)
 {
-    long intConvert = atol(str.c_str);
+    long intConvert = atol(str.c_str());
 
     if (intConvert < INT_MIN || intConvert > INT_MAX)
-    {
-        std::cout << "int: impossible" << std::endl;
-    }
+        converter.setIntPossible(false);
     else
-        std::cout << "int: " << static_cast<int>(intConvert) << std::endl;
+    {
+        converter.setIntPossible(true);
+        converter.setIntValue(static_cast<int>(intConvert));
+    }
 }
 
-static void floatVerification(std::string str)
+static void floatVerification(std::string str, TypeConverter &converter)
 {
-    float floating;
+    float floatValue;
 
-    if (str == "nanf")
-    floating = strtof(str.c_str(), NULL);
+    if (str == "nanf" || str == "+inff" || str == "-inff" || str == "inff") {
+        converter.setFloatPseudoLiteral(true);
+        return ;
+    }
+    floatValue = strtof(str.c_str(), NULL);
+    converter.setFloatValue(floatValue);
 }
 
-static void doubleVerification(std::string str)
+static void doubleVerification(std::string str, TypeConverter &converter)
 {
-    float floating;
+    double doubleValue;
 
-    if (str == "nanf")
-    floating = strtof(str.c_str(), NULL);
+    if (str == "nan" || str == "+inf" || str == "-inf" || str == "inf") {
+        converter.setDoublePseudoLiteral(true);
+        return ;
+    }
+    doubleValue = strtod(str.c_str(), NULL);
+    converter.setDoubleValue(doubleValue);
 }
 
 void ScalarConverter::convert(std::string str)
 {
 
-    unsigned char cshar;
-    int integer;
-    float floating;
-    double doubli;
-
+    
     if (isChar(str))
     {
         TypeConverter converter(str, "char");
@@ -154,45 +164,27 @@ void ScalarConverter::convert(std::string str)
         converter.convertFromChar(str[0]);
         converter.printValues();
     }
-    if (isInt(str))
+    else if (isInt(str))
     {
         TypeConverter converter(str, "int");
-
-        integer = atoi(str.c_str());
-
-        if (!isprint(integer))
-        {
-            std::cout << "não imprimivel" << std::endl;
-        }
-
-        cshar = static_cast<char>(integer);
-        floating = static_cast<float>(integer);
-        doubli = static_cast<double>(integer);
+        intVerification(str, converter);
+        converter.convertFromInt(converter.getIntValue());
+        converter.printValues();
     }
-    if (isFloat(str))
+    else if (isFloat(str))
     {
         TypeConverter converter(str, "float");
-
-        floating = strtof(str.c_str(), NULL);
-
-        cshar = static_cast<char>(floating);
-        integer = static_cast<int>(floating);
-        doubli = static_cast<double>(floating);
-    };
-
-    if (isDouble(str))
+        floatVerification(str, converter);
+        converter.convertFromFloat(converter.getFloatValue());
+        converter.printValues();
+    }
+    else if (isDouble(str))
     {
         TypeConverter converter(str, "double");
-        doubli = DBL_MAX * 2.0;
-
-        floating = static_cast<double>(doubli);
-        cshar = static_cast<char>(doubli);
-        integer = static_cast<int>(doubli);
-    };
-
-    std::cout << "char: " << cshar << std::endl;
-    std::cout << "int: " << integer << std::endl;
-    std::cout << "float: " << floating << std::endl;
-    std::cout << std::fixed << std::setprecision(2);
-    std::cout << "double: " << doubli << std::endl;
+        doubleVerification(str, converter);
+        converter.convertFromDouble(converter.getDoubleValue());
+        converter.printValues();
+    } else {
+        std::cout << "This is not a literal value" << std::endl;
+    }
 };

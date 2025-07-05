@@ -1,8 +1,8 @@
-NAME=convert
+NAME=serializer
 CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 OBJS= $(FILES:.cpp=.o)
-FILES= ScalarConverter.cpp TypeConverter.cpp
+FILES= Serializer.cpp
 
 all: $(NAME)
 

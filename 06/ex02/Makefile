@@ -1,8 +1,8 @@
-NAME=convert
+NAME=realtype
 CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 OBJS= $(FILES:.cpp=.o)
-FILES= ScalarConverter.cpp TypeConverter.cpp
+FILES= Base.cpp A.cpp B.cpp C.cpp IdentifyUtils.cpp
 
 all: $(NAME)
 
