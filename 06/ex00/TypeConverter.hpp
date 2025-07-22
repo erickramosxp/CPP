@@ -12,10 +12,6 @@ class TypeConverter {
 
         std::string originalValue;
 
-        bool isChar;
-        bool isInt;
-        bool isFloat;
-        bool isDouble;
         bool charDisplayable;
         bool charPossible;
         bool intPossible;
@@ -31,11 +27,14 @@ class TypeConverter {
             std::string floatLiteral;
             std::string doubleLiteral;
         };
+        TypeConverter(const TypeConverter&);
+        TypeConverter& operator=(const TypeConverter&);
 
     public:
 
         TypeConverter();
-        TypeConverter(std::string input, std::string typeValue);
+        ~TypeConverter();
+        TypeConverter(std::string input);
         void setCharPossible(bool value);
         void setCharDisplayable(bool value);
         void setIntPossible(bool value);
@@ -53,6 +52,10 @@ class TypeConverter {
         void convertFromInt(long i);
         void convertFromFloat(float f);
         void convertFromDouble(double d);
+        void printChar();
+        void printInt();
+        void printFloat();
+        void printDouble();
         void printValues();
 };
 

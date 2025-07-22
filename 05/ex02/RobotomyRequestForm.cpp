@@ -2,6 +2,7 @@
 #include "Bureaucrat.hpp"
 #include <cstdlib>
 #include <ctime>
+#include <sstream>
 
 RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45) {
     
@@ -41,6 +42,21 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyReq
     this->_target = target;
 };
 
+void RobotomyRequestForm::initializeSeed() const {
+
+    const void* ptr = &this->_target;
+
+    std::ostringstream oss;
+    oss << ptr;
+
+    std::string ptr_str = oss.str();
+    if (ptr_str.substr(0, 2) == "0x")
+        ptr_str = ptr_str.substr(2);
+
+    unsigned long addrs = std::strtoul(ptr_str.c_str(), NULL, 16);
+    std::srand(std::time(0) + addrs);
+}
+
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 
@@ -52,10 +68,9 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 
     std::cout << "BZZZZZZZZZZZT...ZRRRRRRRRRRR...! [some drilling noises]" << std::endl;
 
-    std::srand(std::time(0));
+    this->initializeSeed();
     if (std::rand() % 2 == 0)
         std::cout << this->_target << " has been successfully robotomized!" << std::endl;
     else
         std::cout << "The robotomy of " << _target << " has failed." << std::endl;
-    
 };

@@ -6,17 +6,12 @@ TypeConverter::TypeConverter() {
 
 };
 
-TypeConverter::TypeConverter(std::string input, std::string typeValue): 
-    originalValue(input), isChar(false), isInt(false), isFloat(false), isDouble(false), charDisplayable(true), charPossible(true), intPossible(true), floatPseudoLiteral(false), doublePseudoLiteral(false) {
+TypeConverter::~TypeConverter() {
+    std::cout << "Destructor of TypeConverter was called" std::endl;
+};
 
-    if (typeValue == "char")
-        this->isChar = true;
-    else if (typeValue == "int")
-        this->isInt = true;
-    else if (typeValue == "float")
-        this->isFloat = true;
-    else if (typeValue == "double")
-        this->isDouble = true;
+TypeConverter::TypeConverter(std::string input): 
+    originalValue(input), charDisplayable(true), charPossible(true), intPossible(true), floatPseudoLiteral(false), doublePseudoLiteral(false) {
 
 };
 
@@ -175,10 +170,16 @@ void TypeConverter::convertFromDouble(double d) {
     }
 };
 
-void TypeConverter::printValues() {
+int countPrecision(const std::string& input) {
 
+    std::string::size_type pos = input.find('.');
+    if (pos == std::string::npos)
+        return 1; // Não tem ponto, usa 1 casa decimal por padrão
+    int count = input.length() - pos - 1;
+    return (count < 1) ? 1 : count;
+}
 
-    // Printar char
+void TypeConverter::printChar() {
 
     if (!this->charDisplayable) {
         std::cout << "char: Non displayable" << std::endl;
@@ -187,17 +188,21 @@ void TypeConverter::printValues() {
     } else {
         std::cout << "char: '" << this->charValue << "'" << std::endl;
     }
+};
 
-    // Printar int
+void TypeConverter::printInt() {
+
     if (!this->intPossible) {
         std::cout << "int: impossible" << std::endl;
     } else {
         std::cout << "int: " << this->intValue << std::endl;
     }
-    
-    // Printar float
+};
+
+void TypeConverter::printFloat() {
 
     if (this->doublePseudoLiteral) {
+        
         PseudoLiteralMap map[4] = {
             { "nanf", "nan" },
             { "+inff", "+inf" },
@@ -214,13 +219,14 @@ void TypeConverter::printValues() {
     } else if (this->floatPseudoLiteral) {
         std::cout << "float: " << this->originalValue << std::endl;
     } else {
-        std::cout << std::fixed << std::setprecision(1);
+        std::cout << std::fixed << std::setprecision(countPrecision(this->originalValue));
         std::cout << "float: " << this->floatValue << "f" << std::endl;
     }
+};
 
-    // Printar double
+void TypeConverter::printDouble() {
 
-    if (this->floatPseudoLiteral) {
+     if (this->floatPseudoLiteral) {
         PseudoLiteralMap map[4] = {
             { "nanf", "nan" },
             { "+inff", "+inf" },
@@ -238,9 +244,22 @@ void TypeConverter::printValues() {
         std::cout << "double: " << this->originalValue << std::endl;
     } 
     else {
-        std::cout << std::fixed << std::setprecision(1);
+        std::cout << std::fixed << std::setprecision(countPrecision(this->originalValue));
         std::cout << "double: " << this->doubleValue << std::endl;
     }
+};
+
+void TypeConverter::printValues() {
+
+
+    // Printar char
+    printChar();
+    // Printar int
+    printInt();
+    // Printar float
+    printFloat();
+    // Printar double
+    printDouble();
 
 };
 

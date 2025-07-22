@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
 
     if (argc != 2)
     {
-        std::cout << "Invalid" << std::endl;
+        std::cout << "Invalid usage of ./convert" << std::endl;
         return (1);
     }
 

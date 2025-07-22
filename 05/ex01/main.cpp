@@ -13,16 +13,16 @@ int main() {
         std::cout << taxForm << std::endl;
         std::cout << healthForm << std::endl;
 
-        // Bob trying to sign TaxForm (grade 50 vs. necessário 30) - falha
+        // Bob trying to sign TaxForm (grade 50 vs. required 30) - fail
         bob.signForm(taxForm);
 
-        // Alice trying to sign TaxForm (grade 10 vs. necessário 30) - sucesso
+        // Alice trying to sign TaxForm (grade 10 vs. required 30) - sucess
         alice.signForm(taxForm);
 
-        // Bob trying to sign HealthForm (grade 50 vs. necessário 10) - falha
+        // Bob trying to sign HealthForm (grade 50 vs. required 10) - fail
         bob.signForm(healthForm);
 
-        // Alice trying to sign HealthForm (grade 10 vs. necessário 10) - sucesso
+        // Alice trying to sign HealthForm (grade 10 vs. required 10) - sucess
         alice.signForm(healthForm);
 
         std::cout << taxForm << std::endl;

@@ -30,14 +30,18 @@ void identify(Base* p) {
 
     if (p == NULL) {
         std::cout << "Object is not valid" << std::endl;
+        return ;
     }
 
     if (dynamic_cast<A*>(p)) {
         std::cout << "This object is type A" << std::endl;
+        return ;
     } else if (dynamic_cast<B*>(p)) {
         std::cout << "This object is type B" << std::endl;
+        return ;
     } else if (dynamic_cast<C*>(p)) {
         std::cout << "This object is type C" << std::endl;
+        return ;
     } else {
         std::cout << "This isn't one of these objects: A, B, C" << std::endl;
     }

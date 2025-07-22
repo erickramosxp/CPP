@@ -90,8 +90,6 @@ static bool isDouble(std::string str)
             return (false);
         }
     }
-    if (hasDot)
-        std::cout << "is double" << std::endl;
     return (hasDot);
 }
 
@@ -159,28 +157,28 @@ void ScalarConverter::convert(std::string str)
     
     if (isChar(str))
     {
-        TypeConverter converter(str, "char");
+        TypeConverter converter(str);
         charVerification(str[0], converter);
         converter.convertFromChar(str[0]);
         converter.printValues();
     }
     else if (isInt(str))
     {
-        TypeConverter converter(str, "int");
+        TypeConverter converter(str);
         intVerification(str, converter);
         converter.convertFromInt(converter.getIntValue());
         converter.printValues();
     }
     else if (isFloat(str))
     {
-        TypeConverter converter(str, "float");
+        TypeConverter converter(str);
         floatVerification(str, converter);
         converter.convertFromFloat(converter.getFloatValue());
         converter.printValues();
     }
     else if (isDouble(str))
     {
-        TypeConverter converter(str, "double");
+        TypeConverter converter(str);
         doubleVerification(str, converter);
         converter.convertFromDouble(converter.getDoubleValue());
         converter.printValues();

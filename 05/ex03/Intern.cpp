@@ -55,21 +55,22 @@ AForm* Intern::makeForm(std::string formName, std::string targetOfForm) {
         std::string name;
         AForm* (*create)(const std::string&);
     };
-    
+
     Forms forms[] = {
         {"shrubbery creation", &createShrubbery},
         {"robotomy request", &createRobotomy},
         {"presidential pardon", &createPresidential}
     };
 
+    AForm *form;
+    
     for (int i = 0; i < 3; ++i) {
-        if (forms[i].name == formName) {
-            std::cout << "Intern creates " << formName << std::endl;
-            return forms[i].create(targetOfForm);
+        if (compareIgnoreCase(forms[i].name, formName)) {
+            form = forms[i].create(targetOfForm);
+            std::cout << "Intern creates " << form->getName() << std::endl;
+            return form;
         };
     };
     
     throw Intern::InvalidFormException();
-
-    return NULL;
 };

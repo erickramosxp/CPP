@@ -1,7 +1,7 @@
 #include "Serializer.hpp"
 
-Serializer::Serializer() {
-
+Serializer::~Serializer() {
+    std::cout << "Destructor of Serializer was called" << std::endl;
 };
 
 uintptr_t Serializer::serialize(Data* ptr) {
@@ -24,7 +24,5 @@ Data* Serializer::deserialize(uintptr_t raw) {
         std::cout << "Invalid data raw!" << std::endl;
         return (NULL);
     }
-
-    std::cout << "Passei" << std::endl;
     return (restore);
 };
