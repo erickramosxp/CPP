@@ -25,6 +25,14 @@ static bool isInt(std::string str)
             return (false);
         }
     }
+
+    long long value = atol(str.c_str());
+
+    if (value < std::numeric_limits<int>::min() 
+        || value > std::numeric_limits<int>::max()) {
+            return (false);
+    }
+
     return (true);
 }
 
@@ -56,6 +64,7 @@ static bool isFloat(std::string str)
             return (false);
         }
     }
+    
 
     return (true);
 }
@@ -89,7 +98,7 @@ static bool isDouble(std::string str)
             return (false);
         }
     }
-    return (hasDot);
+    return (true);
 }
 
 static void charVerification(unsigned char c, TypeConverter &converter)
@@ -177,6 +186,7 @@ void ScalarConverter::convert(std::string str)
     }
     else if (isDouble(str))
     {
+        std::cout << "Foi se embora" << std::endl;
         TypeConverter converter(str);
         doubleVerification(str, converter);
         converter.convertFromDouble(converter.getDoubleValue());

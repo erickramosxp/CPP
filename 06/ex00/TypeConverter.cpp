@@ -7,7 +7,7 @@ TypeConverter::TypeConverter() {
 };
 
 TypeConverter::~TypeConverter() {
-    std::cout << "Destructor of TypeConverter was called" std::endl;
+    std::cout << "Destructor of TypeConverter was called" << std::endl;
 };
 
 TypeConverter::TypeConverter(std::string input): 
@@ -135,8 +135,8 @@ void TypeConverter::convertFromFloat(float f) {
     // Converter para double
     if (this->floatPseudoLiteral) {
         this->doubleValue = 0;
-    } else if (f == std::numeric_limits<float>::infinity() || f == -std::numeric_limits<float>::infinity()){
-        this->doubleValue = strtod(this->originalValue.c_str(), NULL);
+    // } else if (f == std::numeric_limits<float>::infinity() || f == -std::numeric_limits<float>::infinity()){
+    //     this->doubleValue = strtod(this->originalValue.c_str(), NULL);
     } else {
         this->doubleValue = static_cast<double>(f);
     }
@@ -176,6 +176,8 @@ int countPrecision(const std::string& input) {
     if (pos == std::string::npos)
         return 1; // Não tem ponto, usa 1 casa decimal por padrão
     int count = input.length() - pos - 1;
+    if (input.find('f'))
+        count--;
     return (count < 1) ? 1 : count;
 }
 
