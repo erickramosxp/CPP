@@ -57,7 +57,6 @@ static bool isFloat(std::string str)
         }
     }
 
-    std::cout << "is float" << str[str.length()] << std::endl;
     return (true);
 }
 

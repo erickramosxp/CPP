@@ -1,5 +1,5 @@
 NAME=functions
-CC= g++ -std=c++98
+CC= c++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 OBJS= $(FILES:.cpp=.o)
 FILES=
