@@ -7,7 +7,6 @@ TypeConverter::TypeConverter() {
 };
 
 TypeConverter::~TypeConverter() {
-    std::cout << "Destructor of TypeConverter was called" << std::endl;
 };
 
 TypeConverter::TypeConverter(std::string input): 
@@ -96,20 +95,12 @@ void TypeConverter::convertFromInt(long i) {
     }
 
     // Converter para float
-    if (!this->intPossible){
-        this->floatValue = strtof(this->originalValue.c_str(), NULL);
-    } else {
-        this->floatValue = static_cast<float>(i);
-    }
+
+    this->floatValue = static_cast<float>(i);
 
 
     // Converter para double
-
-    if (!this->intPossible){
-        this->doubleValue = strtod(this->originalValue.c_str(), NULL);
-    } else {
-        this->doubleValue = static_cast<double>(i);
-    }
+    this->doubleValue = static_cast<double>(i);
 };
 
 void TypeConverter::convertFromFloat(float f) {
@@ -135,8 +126,6 @@ void TypeConverter::convertFromFloat(float f) {
     // Converter para double
     if (this->floatPseudoLiteral) {
         this->doubleValue = 0;
-    // } else if (f == std::numeric_limits<float>::infinity() || f == -std::numeric_limits<float>::infinity()){
-    //     this->doubleValue = strtod(this->originalValue.c_str(), NULL);
     } else {
         this->doubleValue = static_cast<double>(f);
     }
@@ -201,23 +190,40 @@ void TypeConverter::printInt() {
     }
 };
 
+void TypeConverter::printLiteral(Literal typeLiteral) {
+
+    TypeConverter::PseudoLiteralMap map[4] = {
+        { "nanf", "nan" },
+        { "+inff", "+inf" },
+        { "-inff", "-inf" },
+        { "inff", "inf" }
+    };
+
+    std::string literalValue;
+    std::string sufixValue;
+
+    if (typeLiteral == DOUBLE_LITERAL) {
+        sufixValue = "double: ";
+    } else {
+        sufixValue = "float: ";
+    }
+
+    for (int i = 0; i < 4; i++) {
+        if (typeLiteral == DOUBLE_LITERAL)
+            literalValue = map[i].doubleLiteral;
+        else
+            literalValue = map[i].floatLiteral;
+        if (literalValue == originalValue) {
+            std::cout << sufixValue << literalValue << std::endl;
+            break ;
+        }
+    }
+}
+
 void TypeConverter::printFloat() {
 
     if (this->doublePseudoLiteral) {
-        
-        PseudoLiteralMap map[4] = {
-            { "nanf", "nan" },
-            { "+inff", "+inf" },
-            { "-inff", "-inf" },
-            { "inff", "inf" }
-        };
-
-        for (int i = 0; i < 4; i++) {
-            if (map[i].doubleLiteral == originalValue) {
-                std::cout << "float: " << map[i].floatLiteral << std::endl;
-                break ;
-            }
-        }
+        this->printLiteral(FLOAT_LITERAL);
     } else if (this->floatPseudoLiteral) {
         std::cout << "float: " << this->originalValue << std::endl;
     } else {
@@ -229,19 +235,7 @@ void TypeConverter::printFloat() {
 void TypeConverter::printDouble() {
 
      if (this->floatPseudoLiteral) {
-        PseudoLiteralMap map[4] = {
-            { "nanf", "nan" },
-            { "+inff", "+inf" },
-            { "-inff", "-inf" },
-            { "inff", "inf" }
-        };
-
-        for (int i = 0; i < 4; i++) {
-            if (map[i].floatLiteral == originalValue) {
-                std::cout << "double: " << map[i].doubleLiteral << std::endl;
-                break ;
-            }
-        }
+        this->printLiteral(DOUBLE_LITERAL);
     } else if (this->doublePseudoLiteral) {
         std::cout << "double: " << this->originalValue << std::endl;
     } 

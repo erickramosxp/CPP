@@ -1,6 +1,14 @@
 #include "ScalarConverter.hpp"
 #include "TypeConverter.hpp"
 
+static bool isLiteralValue(std::string str) {
+
+    if (str == "nanf" || str == "+inff" || str == "-inff" || str == "inff" ||
+    str == "nan" || str == "+inf" || str == "-inf" || str == "inf")
+        return (true);
+    return (false);
+}
+
 static bool isChar(std::string str)
 {
 
@@ -12,7 +20,6 @@ static bool isChar(std::string str)
 
 static bool isInt(std::string str)
 {
-
     size_t i = 0;
 
     if (str[i] == '-' || str[i] == '+')
@@ -42,7 +49,7 @@ static bool isFloat(std::string str)
     size_t i = 0;
     bool hasDot = false;
 
-    if (str == "nanf" || str == "+inff" || str == "-inff" || str == "inff")
+    if (isLiteralValue(str))
         return (true);
 
     if ((str[i] == '-' || str[i] == '+') && isdigit(str[i + 1]))
@@ -76,7 +83,7 @@ static bool isDouble(std::string str)
     bool hasDot = false;
 
 
-    if (str == "nan" || str == "+inf" || str == "-inf" || str == "inf")
+    if (isLiteralValue(str))
         return (true);
 
     if (str.length() == 1 && str[0] == '.')
@@ -139,7 +146,7 @@ static void floatVerification(std::string str, TypeConverter &converter)
 {
     float floatValue;
 
-    if (str == "nanf" || str == "+inff" || str == "-inff" || str == "inff") {
+    if (isLiteralValue(str)) {
         converter.setFloatPseudoLiteral(true);
         return ;
     }
@@ -151,7 +158,7 @@ static void doubleVerification(std::string str, TypeConverter &converter)
 {
     double doubleValue;
 
-    if (str == "nan" || str == "+inf" || str == "-inf" || str == "inf") {
+    if (isLiteralValue(str)) {
         converter.setDoublePseudoLiteral(true);
         return ;
     }
@@ -186,7 +193,6 @@ void ScalarConverter::convert(std::string str)
     }
     else if (isDouble(str))
     {
-        std::cout << "Foi se embora" << std::endl;
         TypeConverter converter(str);
         doubleVerification(str, converter);
         converter.convertFromDouble(converter.getDoubleValue());

@@ -27,6 +27,12 @@ class TypeConverter {
             std::string floatLiteral;
             std::string doubleLiteral;
         };
+
+        enum Literal {
+            DOUBLE_LITERAL,
+            FLOAT_LITERAL
+        };
+
         TypeConverter(const TypeConverter&);
         TypeConverter& operator=(const TypeConverter&);
 
@@ -35,6 +41,7 @@ class TypeConverter {
         TypeConverter();
         ~TypeConverter();
         TypeConverter(std::string input);
+        void printLiteral(Literal typeLiteral);
         void setCharPossible(bool value);
         void setCharDisplayable(bool value);
         void setIntPossible(bool value);
