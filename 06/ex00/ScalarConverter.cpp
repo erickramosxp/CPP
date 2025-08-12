@@ -1,10 +1,16 @@
 #include "ScalarConverter.hpp"
 #include "TypeConverter.hpp"
 
-static bool isLiteralValue(std::string str) {
+static bool isFloatLiteralValue(std::string str) {
 
-    if (str == "nanf" || str == "+inff" || str == "-inff" || str == "inff" ||
-    str == "nan" || str == "+inf" || str == "-inf" || str == "inf")
+    if (str == "nanf" || str == "+inff" || str == "-inff" || str == "inff")
+        return (true);
+    return (false);
+}
+
+static bool isDoubleLiteralValue(std::string str) {
+
+    if (str == "nan" || str == "+inf" || str == "-inf" || str == "inf")
         return (true);
     return (false);
 }
@@ -49,7 +55,7 @@ static bool isFloat(std::string str)
     size_t i = 0;
     bool hasDot = false;
 
-    if (isLiteralValue(str))
+    if (isFloatLiteralValue(str))
         return (true);
 
     if ((str[i] == '-' || str[i] == '+') && isdigit(str[i + 1]))
@@ -83,7 +89,7 @@ static bool isDouble(std::string str)
     bool hasDot = false;
 
 
-    if (isLiteralValue(str))
+    if (isDoubleLiteralValue(str))
         return (true);
 
     if (str.length() == 1 && str[0] == '.')
@@ -131,7 +137,7 @@ static void charVerification(unsigned char c, TypeConverter &converter)
 
 static void intVerification(std::string str, TypeConverter &converter)
 {
-    long intConvert = atol(str.c_str());
+    long intConvert = std::atol(str.c_str());
 
     if (intConvert < INT_MIN || intConvert > INT_MAX)
         converter.setIntPossible(false);
@@ -146,11 +152,11 @@ static void floatVerification(std::string str, TypeConverter &converter)
 {
     float floatValue;
 
-    if (isLiteralValue(str)) {
+    if (isFloatLiteralValue(str)) {
         converter.setFloatPseudoLiteral(true);
         return ;
     }
-    floatValue = strtof(str.c_str(), NULL);
+    floatValue = std::strtof(str.c_str(), NULL);
     converter.setFloatValue(floatValue);
 }
 
@@ -158,42 +164,38 @@ static void doubleVerification(std::string str, TypeConverter &converter)
 {
     double doubleValue;
 
-    if (isLiteralValue(str)) {
+    if (isDoubleLiteralValue(str)) {
         converter.setDoublePseudoLiteral(true);
         return ;
     }
-    doubleValue = strtod(str.c_str(), NULL);
+    doubleValue = std::strtod(str.c_str(), NULL);
     converter.setDoubleValue(doubleValue);
 }
 
 void ScalarConverter::convert(std::string str)
 {
-
+    TypeConverter converter(str);
     
     if (isChar(str))
     {
-        TypeConverter converter(str);
         charVerification(str[0], converter);
         converter.convertFromChar(str[0]);
         converter.printValues();
     }
     else if (isInt(str))
     {
-        TypeConverter converter(str);
         intVerification(str, converter);
         converter.convertFromInt(converter.getIntValue());
         converter.printValues();
     }
     else if (isFloat(str))
     {
-        TypeConverter converter(str);
         floatVerification(str, converter);
         converter.convertFromFloat(converter.getFloatValue());
         converter.printValues();
     }
     else if (isDouble(str))
     {
-        TypeConverter converter(str);
         doubleVerification(str, converter);
         converter.convertFromDouble(converter.getDoubleValue());
         converter.printValues();

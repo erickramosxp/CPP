@@ -163,11 +163,13 @@ int countPrecision(const std::string& input) {
 
     std::string::size_type pos = input.find('.');
     if (pos == std::string::npos)
-        return 1; // Não tem ponto, usa 1 casa decimal por padrão
+        return 1;
     int count = input.length() - pos - 1;
-    if (input.find('f'))
-        count--;
-    return (count < 1) ? 1 : count;
+    std::string::size_type fpos = input.find('f');
+    if (fpos != std::string::npos && input[fpos - 1] != '.')
+        count = count - 1;
+
+    return count == 0 ? 1: count;
 }
 
 void TypeConverter::printChar() {
@@ -200,6 +202,7 @@ void TypeConverter::printLiteral(Literal typeLiteral) {
     };
 
     std::string literalValue;
+    std::string toFind;
     std::string sufixValue;
 
     if (typeLiteral == DOUBLE_LITERAL) {
@@ -207,13 +210,17 @@ void TypeConverter::printLiteral(Literal typeLiteral) {
     } else {
         sufixValue = "float: ";
     }
-
+    
     for (int i = 0; i < 4; i++) {
-        if (typeLiteral == DOUBLE_LITERAL)
+        if (typeLiteral == DOUBLE_LITERAL) {
             literalValue = map[i].doubleLiteral;
-        else
+            toFind =  map[i].floatLiteral;
+        }
+        else {
             literalValue = map[i].floatLiteral;
-        if (literalValue == originalValue) {
+            toFind = map[i].doubleLiteral;
+        }
+        if (toFind == this->originalValue) {
             std::cout << sufixValue << literalValue << std::endl;
             break ;
         }
@@ -221,7 +228,7 @@ void TypeConverter::printLiteral(Literal typeLiteral) {
 }
 
 void TypeConverter::printFloat() {
-
+    
     if (this->doublePseudoLiteral) {
         this->printLiteral(FLOAT_LITERAL);
     } else if (this->floatPseudoLiteral) {
@@ -233,8 +240,8 @@ void TypeConverter::printFloat() {
 };
 
 void TypeConverter::printDouble() {
-
-     if (this->floatPseudoLiteral) {
+    
+    if (this->floatPseudoLiteral) {
         this->printLiteral(DOUBLE_LITERAL);
     } else if (this->doublePseudoLiteral) {
         std::cout << "double: " << this->originalValue << std::endl;

@@ -3,8 +3,7 @@
 #include <iostream>
 #include <climits>
 #include <iomanip>
-#include <stdlib.h>
-#include <limits>
+#include <cctype>
 
 class TypeConverter {
 
