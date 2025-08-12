@@ -2,8 +2,7 @@
 
 #include "TypeConverter.hpp"
 
-TypeConverter::TypeConverter() {
-
+TypeConverter::TypeConverter(): originalValue(NULL), charDisplayable(true), charPossible(true), intPossible(true), floatPseudoLiteral(false), doublePseudoLiteral(false) {
 };
 
 TypeConverter::~TypeConverter() {
@@ -70,14 +69,15 @@ double TypeConverter::getDoubleValue() const {
 
 void TypeConverter::convertFromChar(char c) {
 
-    // Converter para int
+    // Convert to int
 
     this->intValue = static_cast<int>(c);
 
-    // Converter para float
+    // Convert to float
 
     this->floatValue = static_cast<float>(c);
-    // Converter para double
+    
+    // Converter to double
 
     this->doubleValue = static_cast<double>(c);
 
@@ -85,7 +85,7 @@ void TypeConverter::convertFromChar(char c) {
 
 void TypeConverter::convertFromInt(long i) {
 
-    // Converter pra char
+    // Convert to char
     if (!this->intPossible || (i < 0 || i > 127)) {
         this->charPossible = false;
     } else if (!isprint(i)) {
@@ -94,26 +94,26 @@ void TypeConverter::convertFromInt(long i) {
         this->charValue = static_cast<char>(i);
     }
 
-    // Converter para float
+    // Convert to float
 
     this->floatValue = static_cast<float>(i);
 
 
-    // Converter para double
+    // Convert to double
     this->doubleValue = static_cast<double>(i);
 };
 
 void TypeConverter::convertFromFloat(float f) {
 
-    // Converter para int
+    // Convert to int
 
-    if (this->floatPseudoLiteral || (f < INT_MIN || f > INT_MAX)) {
+    if (this->floatPseudoLiteral || (f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())) {
         this->intPossible = false;
     } else {
         this->intValue = static_cast<int>(f);
     }
 
-    // Converter para char
+    // Convert to char
 
     if (!this->intPossible || (f < 0 || f > 127)) {
         this->charPossible = false;
@@ -133,7 +133,7 @@ void TypeConverter::convertFromFloat(float f) {
 
 void TypeConverter::convertFromDouble(double d) {
 
-    // Converter para int
+    // Convert to int
 
     if (this->doublePseudoLiteral || (d < INT_MIN || d > INT_MAX)) {
         this->intPossible = false;
@@ -141,7 +141,7 @@ void TypeConverter::convertFromDouble(double d) {
         this->intValue = static_cast<int>(d);
     }
 
-    // Converter para char
+    // Convert to char
 
     if (!this->intPossible || (d < 0 || d > 127)) {
         this->charPossible = false;
@@ -151,7 +151,7 @@ void TypeConverter::convertFromDouble(double d) {
         this->charValue = static_cast<char>(d);
     }
 
-    // Converter para float
+    // Convert to float
     if (floatPseudoLiteral) {
         this->floatValue = 0;
     } else {
@@ -255,13 +255,13 @@ void TypeConverter::printDouble() {
 void TypeConverter::printValues() {
 
 
-    // Printar char
+    // Print char
     printChar();
-    // Printar int
+    // Print int
     printInt();
-    // Printar float
+    // Print float
     printFloat();
-    // Printar double
+    // Print double
     printDouble();
 
 };

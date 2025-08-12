@@ -50,15 +50,18 @@ void identify(Base* p) {
 void identify(Base& p) {
 
     try {
-        dynamic_cast<A&>(p);
+        A& a = dynamic_cast<A&>(p);
+        static_cast<void>(a);
         std::cout << "This object is type A" << std::endl;
     } catch (...){
         try {
-            dynamic_cast<B&>(p);
+            B& b = dynamic_cast<B&>(p);
+            static_cast<void>(b);
             std::cout << "This object is type B" << std::endl;
         } catch (...){
             try {
-                dynamic_cast<C&>(p);
+                C& c = dynamic_cast<C&>(p);
+                static_cast<void>(c);
                 std::cout << "This object is type C" << std::endl;
             } catch (...){
                 std::cout << "This isn't one of these objects: A, B, C" << std::endl;
