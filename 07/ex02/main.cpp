@@ -8,17 +8,17 @@ void printValues(const Array<T>& array) {
 
     for (unsigned int i = 0; i < array.size(); i++) {
 
-        std::cout << i << "° = " << array[i] << " | " ;
+        std::cout << i << "° = " << array[i] << std::endl;
     }
-    std::cout << std::endl;
 }
 
-#define MAX_VAL 750
-int main(int, char**)
+#define MAX_VAL 100
+int main()
 {
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
+
     for (int i = 0; i < MAX_VAL; i++)
     {
         const int value = rand();
@@ -43,21 +43,18 @@ int main(int, char**)
             return 1;
         }
     }
-    try
-    {
+    
+    try {
         numbers[-2] = 0;
     }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-        std::cerr << "negativo" << std::endl;
+    catch(const std::exception& e) {
+        std::cerr << e.what() ;
+        std::cerr << " Valor negativo no index." << std::endl;
     }
-    try
-    {
+
+    try {
         numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
+    } catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
 

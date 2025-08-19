@@ -20,7 +20,8 @@ Array<T>& Array<T>::operator=(const Array& other) {
 
     if (this != &other) {
 
-        delete[] this->array;
+        if (this->array)
+            delete[] this->array;
 
         this->_size = other.size();
         this->array = new T[this->_size];
@@ -53,3 +54,9 @@ const char* Array<T>::OutOfBoundsException::what() const throw() {
     
     return "Index out of bounds";
 }
+
+template <typename T>
+Array<T>::~Array() {
+    if (this->array)
+        delete[] this->array;
+};
