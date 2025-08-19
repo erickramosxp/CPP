@@ -4,6 +4,7 @@
 #include <climits>
 #include <iomanip>
 #include <cctype>
+#include <limits>
 
 class TypeConverter {
 
@@ -32,12 +33,12 @@ class TypeConverter {
             FLOAT_LITERAL
         };
 
+        TypeConverter();
         TypeConverter(const TypeConverter&);
         TypeConverter& operator=(const TypeConverter&);
 
     public:
 
-        TypeConverter();
         ~TypeConverter();
         TypeConverter(std::string input);
         void printLiteral(Literal typeLiteral);
@@ -64,10 +65,3 @@ class TypeConverter {
         void printDouble();
         void printValues();
 };
-
-
-/*
-
-Entrada da string, já entra sabendo o que é, depois precisa fazer as verificações pra os outros tipos
-
-*/
