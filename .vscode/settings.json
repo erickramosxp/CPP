@@ -81,7 +81,9 @@
         "queue": "cpp",
         "codecvt": "cpp",
         "stack": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "forward_list": "cpp",
+        "*.tpp": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

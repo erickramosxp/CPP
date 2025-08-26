@@ -15,8 +15,15 @@ int main() {
     haystack.push_back(4);
 
     try {
-        easyfind(haystack, 3);
-        easyfind(l, 25);
+        std::list<int>::iterator it = easyfind(l, 25);
+        std::cout << *it << std::endl;
+    } catch (std::exception& ex) {
+        std::cout << ex.what() << std::endl;
+    }
+
+    try {
+        std::vector<int>::iterator it = easyfind(haystack, 3);
+        std::cout << *it << std::endl;
 
     } catch (std::exception& ex) {
         std::cout << ex.what() << std::endl;

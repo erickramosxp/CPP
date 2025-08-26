@@ -8,6 +8,6 @@
 #include <sstream> 
 
 template <typename T>
-void easyfind(T container, int nb);
+typename T::iterator easyfind(T& container, int nb);
 
 #include "easyfind.tpp"
