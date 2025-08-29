@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <map>
 
 class BitcoinExchange {
 
@@ -16,5 +17,6 @@ class BitcoinExchange {
         BitcoinExchange(const BitcoinExchange& exchange);
         BitcoinExchange& operator=(const BitcoinExchange& exchange);
         ~BitcoinExchange();
-        void readDataFromCSV();
-}
+        void readDatabaseFromCSV();
+        void readInputFile();
+};

@@ -103,4 +103,6 @@ int main()
          ++it) {
         std::cout << *it << std::endl;
     }
+
+    return 0;
 }

@@ -83,7 +83,10 @@
         "stack": "cpp",
         "list": "cpp",
         "forward_list": "cpp",
-        "*.tpp": "cpp"
+        "*.tpp": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "__tree": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

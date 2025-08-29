@@ -2,7 +2,7 @@ NAME=btc
 CC= c++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 OBJS= $(FILES:.cpp=.o)
-FILES=
+FILES= BitcoinExchange.cpp
 
 all: $(NAME)
 
