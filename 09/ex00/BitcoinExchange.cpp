@@ -161,6 +161,22 @@ void printConversion(const std::string& key, const std::string& value, const std
     std::cout << key << " => " << btc << " = " << (totalValue * quantityBTC) << std::endl;
 }
 
+void BitcoinExchange::getPreviousDateToConversion(const std::string& key, const std::string& value) {
+
+    this->data[key] = "0";
+    
+    std::map<std::string, std::string>::iterator it = this->data.find(key);
+
+    if (it != data.begin()) {
+        --it;
+        printConversion(key, it->second, value);                        
+    } else {
+        std::cout << "Date " << key << " not founded in database" << std::endl;
+    }
+    this->data.erase(key);
+
+}
+
 void BitcoinExchange::readInputFile() {
 
     std::ifstream file(this->fileComper.c_str());
@@ -190,20 +206,7 @@ void BitcoinExchange::readInputFile() {
                 if (!this->data[key].empty()) {
                     printConversion(key, this->data[key], value);                   
                 } else {
-
-                    this->data[key] = "0";
-                    std::map<std::string, std::string>::iterator it = this->data.find(key);
-
-                    if (it != data.begin()) {
-
-                        --it;
-
-                        printConversion(key, it->second, value);                        
-
-                    } else {
-                        std::cout << "Date " << key << " not founded in database" << std::endl;
-                    }
-                    this->data.erase(key);
+                    getPreviousDateToConversion(key, value);
                 }
             } else {
                 std::cout << "Error: bad input => " << key << std::endl;

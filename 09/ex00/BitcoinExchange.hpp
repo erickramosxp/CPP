@@ -19,4 +19,5 @@ class BitcoinExchange {
         ~BitcoinExchange();
         void readDatabaseFromCSV();
         void readInputFile();
+        void getPreviousDateToConversion(const std::string& key, const std::string& value);
 };
