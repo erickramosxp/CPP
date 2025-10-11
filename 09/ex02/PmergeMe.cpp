@@ -39,14 +39,27 @@ bool isInteger(std::string arg) {
     return (true);
 }
 
+int validNumber(std::string arg) {
+
+    if (!isInteger(arg)) {
+        throw PmergeMe::InvalidNumberException();
+    }
+    if (!isNumber(arg)) {
+        throw PmergeMe::InvalidNumberException();
+    }
+    int number = std::atoi(arg.c_str());
+    return (number);
+}
+
 void PmergeMe::initContainers(char** args) {
+
 
     for (int i = 0; args[i] ; i++)
     {
-        if (!isInteger(args[i])) {
-            std::cout << args[i] << " not is an integer" << std::endl;
-        };
-        int number = std::atoi(args[i]);
+        // if (!isInteger(args[i])) {
+        //     std::cout << args[i] << " not is an integer" << std::endl;
+        // };
+        int number = validNumber(args[i]);
         this->vectorNumbers.push_back(number);
         this->dequeNumbers.push_back(number);
     }
@@ -57,3 +70,9 @@ void PmergeMe::initContainers(char** args) {
         ++vectorIterator;
     }
 };
+
+
+const char* PmergeMe::InvalidNumberException::what() const throw() {
+
+    return "Invalid number!";
+}

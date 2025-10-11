@@ -4,6 +4,7 @@
 #include <deque>
 #include <vector>
 #include <cstdlib>
+#include <exception>
 
 class PmergeMe {
 
@@ -18,4 +19,10 @@ class PmergeMe {
         PmergeMe& operator=(const PmergeMe& other);
         void initContainers(char** args);
         ~PmergeMe();
+
+        class InvalidNumberException : public std::exception {
+
+            public:
+                const char* what() const throw();
+        };
 };

@@ -8,6 +8,15 @@ int main(int argc, char** argv) {
         std::cout << "Invalid argument!" << std::endl;
         return (1);
     }
-    merge.initContainers(argv + 1);
+    
+    try
+    {
+        merge.initContainers(argv + 1);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    
     return (0);
 }
