@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
     try
     {
         merge.initContainers(argv + 1);
+        merge.mergeInsertionSort();
     }
     catch(const std::exception& e)
     {
