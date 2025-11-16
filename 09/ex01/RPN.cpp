@@ -51,8 +51,7 @@ int divide(int a, int b) {
     
     // Jogar exceção quando for divisão por zero
     if (b == 0) {
-        std::cout << "Error: zero division" << std::endl;
-        return 0;
+        throw std::runtime_error("Error: zero division");
     }
     return (a / b);
 }
@@ -83,11 +82,11 @@ int validateInput(const std::string& symbol) {
     // Jogar uma exceção
 
     if (!isOperator(symbol) && !validNumber(symbol)) {
-        std::cout << "This is no valid input '" <<  symbol << "'" << std::endl;
+        std::cerr << "This is no valid input '" <<  symbol << "'" << std::endl;
         return (0);
     }
     if ((symbol.size() > 1 && symbol.at(0) != '-') || (symbol.size() > 2 && symbol.at(0) == '-')) {
-        std::cout << "This input is not available in the program '" << symbol << "'" << std::endl;
+        std::cerr << "This input is not available in the program '" << symbol << "'" << std::endl;
         return (0);
     }
     return (1);
@@ -104,7 +103,7 @@ int RPN::handlerInput(const std::string& symbol) {
         inputNumbers.push(number);
     } else if (inputNumbers.empty()) {
         // Jogar exceção
-        std::cout << "Order of element is not valid." << std::endl;
+        std::cerr << "Order of element is not valid." << std::endl;
         return 0;
     } else {
         
@@ -112,7 +111,7 @@ int RPN::handlerInput(const std::string& symbol) {
         inputNumbers.pop();
         if (inputNumbers.empty()) {
             // Jogar exceção
-            std::cout << "Order of element is not valid." << std::endl;
+            std::cerr << "Order of element is not valid." << std::endl;
             return 0;
         }
         nb2 = inputNumbers.top();
@@ -132,7 +131,7 @@ int RPN::handlerInput(const std::string& symbol) {
 RPN::RPN(const std::string& input) {
 
     if (input.empty()) {
-        std::cout << "Invalid input" << std::endl;
+        std::cerr << "Invalid input" << std::endl;
         return ;
     }
     inicializationListOfOperations();
@@ -152,7 +151,7 @@ RPN::RPN(const std::string& input) {
     }
 
     if (inputNumbers.size() > 1) {
-        std::cout << "Error in the input program" << std::endl;
+        std::cerr << "Error in the input program" << std::endl;
     } else {
         std::cout << inputNumbers.top() << std::endl;
     }

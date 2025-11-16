@@ -2,8 +2,7 @@
 
 int main(int argc, char** argv) {
 
-    PmergeMe<std::vector<int> > merge;
-    PmergeMe<std::deque<int> > merge2;
+    PmergeMe merge;
 
     if (argc < 3) {
         std::cout << "Invalid argument!" << std::endl;
@@ -14,11 +13,13 @@ int main(int argc, char** argv) {
     {
         merge.initContainers(argv + 1);
         merge.mergeInsertionSort();
-        merge2.initContainers(argv + 1);
-        merge2.mergeInsertionSort();
     }
-    catch(const std::exception& e)
+    catch (const std::runtime_error& err)
     {
+        std::cerr << err.what() << std::endl;
+    }
+    catch (const std::exception& e) {
+        
         std::cerr << e.what() << std::endl;
     }
     

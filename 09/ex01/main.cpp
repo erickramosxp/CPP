@@ -9,6 +9,15 @@ int main(int argc, char** argv) {
     }
     if (argv[1] == NULL)
         return 1;
-    RPN polishNotation(argv[1]);
+
+    try
+    {
+        RPN polishNotation(argv[1]);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
     return (0);
 }

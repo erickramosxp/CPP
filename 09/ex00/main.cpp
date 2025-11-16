@@ -9,7 +9,15 @@ int main(int argc, char** argv) {
     }
     
     BitcoinExchange exchange(argv[1]);
-    exchange.readDatabaseFromCSV();
+    try {
+        exchange.readDatabaseFromCSV();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+        return (1);
+    }
+    
     exchange.readInputFile();
 
     return (0);

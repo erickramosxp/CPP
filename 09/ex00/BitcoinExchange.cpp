@@ -6,6 +6,7 @@
 #include <cctype>
 #include <cstdlib>
 #include <iomanip>
+#include <exception>
 
 BitcoinExchange::BitcoinExchange(std::string file) {
     this->fileComper = file;
@@ -75,9 +76,17 @@ bool validateDate(const std::string& date) {
     std::string year, month, day;
     
     pos = date.find('-');
+    if (pos == std::string::npos) {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
+    }
     year = date.substr(0, pos);
     prevPos = pos;
     pos = date.find('-', pos + 1);
+    if (pos == std::string::npos) {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
+    }
     month = date.substr(year.size() + 1, pos - prevPos - 1);
     day = date.substr(pos + 1, date.size() - pos);
 
@@ -91,6 +100,7 @@ bool validateDate(const std::string& date) {
         std::cout << "Error: bad input => " << date << std::endl;
         return false;
     }
+    
     return true;
 }
 
@@ -99,8 +109,7 @@ void BitcoinExchange::readDatabaseFromCSV() {
     std::ifstream file("data.csv");
 
     if (!file.is_open()) {
-        std::cerr << "Error opening data file." << std::endl;
-        return;
+        throw std::runtime_error("Error opening database file.");
     }
 
     std::string line;
@@ -113,7 +122,7 @@ void BitcoinExchange::readDatabaseFromCSV() {
             if (key == "date")
                 continue ;
             if (!validateDate(key) || !validateValue(value))
-                return ;
+                throw std::runtime_error("Error in database format.");
             this->data[key] = value;
         }
     }
