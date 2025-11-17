@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <exception>
+#include <cmath>
 
 BitcoinExchange::BitcoinExchange(std::string file) {
     this->fileComper = file;
@@ -159,15 +160,39 @@ void printConversion(const std::string& key, const std::string& value, const std
     double totalValue = std::strtod(value.c_str(), NULL);
     double quantityBTC = std::strtod(btc.c_str(), NULL);
 
-    std::cout << std::fixed << std::setprecision(2);
-
-
     if (quantityBTC > 1000) {
         std::cout << "Error: too large a number." << std::endl;
         return ;
     }
 
-    std::cout << key << " => " << btc << " = " << (totalValue * quantityBTC) << std::endl;
+    double result = totalValue * quantityBTC;
+    
+    // Format with 2 decimal places but remove trailing zeros
+    std::cout << key << " => " << btc << " = ";
+    
+    // Round to 2 decimal places
+    result = std::floor(result * 100 + 0.5) / 100;
+    
+    // Print with up to 2 decimal places, but remove trailing zeros
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(2) << result;
+    std::string resultStr = oss.str();
+    
+    // Remove trailing zeros
+    size_t dotPos = resultStr.find('.');
+    if (dotPos != std::string::npos) {
+        size_t lastNonZero = resultStr.find_last_not_of('0');
+        if (lastNonZero != std::string::npos && lastNonZero >= dotPos) {
+            if (lastNonZero == dotPos) {
+                // All decimals are zero, keep one
+                resultStr = resultStr.substr(0, dotPos + 2);
+            } else {
+                resultStr = resultStr.substr(0, lastNonZero + 1);
+            }
+        }
+    }
+    
+    std::cout << resultStr << std::endl;
 }
 
 void BitcoinExchange::getPreviousDateToConversion(const std::string& key, const std::string& value) {
@@ -191,7 +216,7 @@ void BitcoinExchange::readInputFile() {
     std::ifstream file(this->fileComper.c_str());
 
     if (!file.is_open()) {
-        std::cerr << "Error opening input file." << std::endl;
+        std::cerr << "Error: could not open file." << std::endl;
         return;
     }
 
