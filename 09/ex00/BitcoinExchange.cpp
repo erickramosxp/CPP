@@ -191,7 +191,7 @@ void BitcoinExchange::readInputFile() {
     std::ifstream file(this->fileComper.c_str());
 
     if (!file.is_open()) {
-        std::cerr << "Error opening input file." << std::endl;
+        throw std::runtime_error("Error opening input file.");
         return;
     }
 

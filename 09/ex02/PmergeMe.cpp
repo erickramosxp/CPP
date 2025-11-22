@@ -49,7 +49,9 @@ int PmergeMe::validNumber(std::string arg) {
     if (!isNumber(arg)) {
         throw PmergeMe::InvalidNumberException();
     }
-    int number = std::atoi(arg.c_str());
+    long number = std::atol(arg.c_str());
+    if (number > INT_MAX)
+        throw PmergeMe::InvalidNumberException();
     return (number);
 }
 

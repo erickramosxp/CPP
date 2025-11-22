@@ -10,12 +10,10 @@ int main(int argc, char** argv) {
     if (argv[1] == NULL)
         return 1;
 
-    try
-    {
+    try {
         RPN polishNotation(argv[1]);
     }
-    catch(const std::exception& e)
-    {
+    catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
     
